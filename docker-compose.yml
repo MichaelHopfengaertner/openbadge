@@ -7,8 +7,10 @@ services:
       dockerfile: ./compose/Dockerfile
     volumes:
       - .:/app
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 #    devices:
 #      - /dev/ttyACM0:/dev/ttyACM0
     privileged: true
+    network_mode: "host"
     entrypoint: ["/app/compose/entry_point.sh"]
     command: ["badge_03v4_noDebug","flashAPP"]
